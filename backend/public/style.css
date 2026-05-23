@@ -1,0 +1,293 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #111;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Striking Diagonal Split Background */
+.split-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    /* Yellow and Black Split like the reference image */
+    background: linear-gradient(110deg, #ffcc00 0%, #ffcc00 55%, #111111 55%, #111111 100%);
+}
+
+/* Texture Overlay */
+.split-bg::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.05"/%3E%3C/svg%3E');
+    mix-blend-mode: overlay;
+    pointer-events: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 1300px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.main-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: #111;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+}
+
+.main-title .highlight {
+    color: #fff;
+    background: #111;
+    padding: 0 15px;
+    display: inline-block;
+    transform: skewX(-10deg);
+}
+
+.sub-title {
+    font-size: 1.1rem;
+    color: #222;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-top: 15px;
+    background: #ffcc00;
+    display: inline-block;
+    padding: 5px 15px;
+    transform: skewX(-10deg);
+}
+
+/* Card Styling */
+.card {
+    background: #111;
+    border: 4px solid #ffcc00;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 15px 15px 0px rgba(0,0,0,0.8);
+    transition: transform 0.2s ease;
+    transform: skewX(-3deg);
+}
+
+.card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #ffcc00;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    transform: skewX(3deg); /* counteract parent skew */
+}
+
+.input-group {
+    margin-bottom: 25px;
+    transform: skewX(3deg);
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 16px;
+    background: #222;
+    border: 2px solid #333;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #ffcc00;
+    background: #111;
+}
+
+.btn-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    transform: skewX(3deg);
+}
+
+.btn {
+    flex: 1;
+    padding: 16px;
+    font-size: 1.1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+}
+
+.btn.primary {
+    background: #ffcc00;
+    color: #111;
+}
+
+.btn.primary:hover {
+    background: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4);
+}
+
+.btn.secondary {
+    background: #222;
+    color: #fff;
+    border: 2px solid #444;
+}
+
+.btn.secondary:hover {
+    background: #333;
+    border-color: #ffcc00;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-align: center;
+    display: none;
+    transform: skewX(3deg);
+}
+
+.alert.error { background: #ff4444; color: #fff; }
+.alert.success { background: #00C851; color: #fff; }
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    width: 100%;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.feature-card {
+    background: #111;
+    border: 3px solid #ffcc00;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.8);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 15px 15px 0px rgba(0,0,0,0.9);
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 5px;
+    height: 100%;
+    background: #ffcc00;
+}
+
+.card-icon {
+    font-size: 3.5rem;
+    color: #ffcc00;
+    margin-bottom: 25px;
+}
+
+.feature-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.feature-card p {
+    color: #aaa;
+    line-height: 1.6;
+    margin-bottom: 35px;
+    font-size: 1.05rem;
+    flex-grow: 1;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 25px;
+    background: #ffcc00;
+    color: #111;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+}
+
+.action-btn i {
+    font-size: 1.3rem;
+    transition: transform 0.2s ease;
+}
+
+.action-btn:hover {
+    background: #fff;
+}
+
+.action-btn:hover i {
+    transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .split-bg {
+        background: linear-gradient(160deg, #ffcc00 0%, #ffcc00 40%, #111111 40%, #111111 100%);
+    }
+    .main-title { font-size: 3rem; }
+    .card { transform: none; box-shadow: 8px 8px 0px rgba(0,0,0,0.8); }
+    .card h2, .input-group, .btn-group, .alert { transform: none; }
+}

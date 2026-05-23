@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI School Intelligence</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    
+    <div class="split-bg"></div>
+
+    <div class="container">
+        
+        <header>
+            <h1 class="main-title">AI SCHOOL<br><span class="highlight">INTELLIGENCE</span></h1>
+            <p class="sub-title">ENTERPRISE-GRADE PREDICTIVE ANALYTICS</p>
+        </header>
+
+        <!-- AUTHENTICATION SCREEN -->
+        <main id="auth-section" class="card active">
+            <h2>SECURE LOGIN</h2>
+            <div class="alert" id="alert-box"></div>
+            
+            <form id="auth-form">
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" placeholder="admin@admin.com" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                
+                <div class="btn-group">
+                    <button type="submit" class="btn primary" id="login-btn">LOGIN</button>
+                    <button type="button" class="btn secondary" id="register-btn">REGISTER</button>
+                </div>
+            </form>
+        </main>
+
+        <!-- DASHBOARD SCREEN -->
+        <main id="dashboard-section" class="dashboard-grid hidden">
+            
+            <div class="feature-card">
+                <i class="ph ph-warning-circle card-icon"></i>
+                <h3>Student Churn</h3>
+                <p>Predict at-risk students using AI. Deploy intervention plans and automated WhatsApp alerts.</p>
+                <a href="http://127.0.0.1:7860" target="_blank" class="action-btn">ACCESS SYSTEM <i class="ph ph-arrow-right"></i></a>
+            </div>
+
+            <div class="feature-card">
+                <i class="ph ph-trend-up card-icon"></i>
+                <h3>Growth Analytics</h3>
+                <p>Analyze revenue, admissions, and retention performance with smart institutional visualizations.</p>
+                <a href="http://127.0.0.1:1000" target="_blank" class="action-btn">ACCESS SYSTEM <i class="ph ph-arrow-right"></i></a>
+            </div>
+
+            <div class="feature-card">
+                <i class="ph ph-globe-hemisphere-east card-icon"></i>
+                <h3>Future Forecast</h3>
+                <p>Forecast future school performance using predictive intelligence for data-driven decisions.</p>
+                <a href="http://127.0.0.1:1002" target="_blank" class="action-btn">ACCESS SYSTEM <i class="ph ph-arrow-right"></i></a>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
