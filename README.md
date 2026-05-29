@@ -1,5 +1,7 @@
 AI School Growth Analytics Platform
 
+![AI School Growth Analytics](./school_preview.png)
+
 An AI-powered analytics platform designed to help schools improve student retention, predict revenue, and identify potential student churn using Machine Learning models and interactive dashboards.
 
 Problem Statement
