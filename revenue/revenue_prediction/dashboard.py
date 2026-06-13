@@ -2,9 +2,9 @@ import gradio as gr
 import pandas as pd
 import joblib
 
-model=joblib.load(
-    "growth_model.pkl"
-)
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model=joblib.load(os.path.join(BASE_DIR, "growth_model.pkl"))
 
 def predict_growth(file):
 
