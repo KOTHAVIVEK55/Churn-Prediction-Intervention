@@ -12,6 +12,24 @@ document.addEventListener('DOMContentLoaded', () => {
         showDashboard();
     }
 
+    async function loadConfig() {
+        try {
+            const res = await fetch('/api/config');
+            if (res.ok) {
+                const config = await res.json();
+                const churnLink = document.getElementById('churn-link');
+                const growthLink = document.getElementById('growth-link');
+                const futureLink = document.getElementById('future-link');
+                if (churnLink) churnLink.href = config.churnUrl;
+                if (growthLink) growthLink.href = config.growthUrl;
+                if (futureLink) futureLink.href = config.futureUrl;
+            }
+        } catch (err) {
+            console.error('Failed to load configuration:', err);
+        }
+    }
+    loadConfig();
+
     function showAlert(msg, isError = false) {
         alertBox.textContent = msg;
         alertBox.className = 'alert ' + (isError ? 'error' : 'success');

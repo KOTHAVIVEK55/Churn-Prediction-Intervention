@@ -14,6 +14,13 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
+// Proxy routes to Python Gradio apps
+app.use('/churn', createProxyMiddleware({ target: 'http://127.0.0.1:7860', changeOrigin: true, ws: true }));
+app.use('/growth', createProxyMiddleware({ target: 'http://127.0.0.1:1000', changeOrigin: true, ws: true }));
+app.use('/future', createProxyMiddleware({ target: 'http://127.0.0.1:1002', changeOrigin: true, ws: true }));
+
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/whatsapp', require('./routes/whatsappRoutes'));
 
@@ -27,14 +34,12 @@ const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/school_ana
 mongoose.connect(MONGO_URI)
   .then(() => {
     console.log('MongoDB connected successfully');
-    app.listen(PORT, () => {
-      console.log(`Node.js Backend server running on port ${PORT}`);
-    });
   })
   .catch((err) => {
     console.error('MongoDB connection error:', err.message);
-    // Still start server even if Mongo fails so we can test the UI
-    app.listen(PORT, () => {
-      console.log(`Node.js Backend server running on port ${PORT} (without MongoDB)`);
-    });
+    console.warn('Backend server will continue running using local JSON database fallback.');
   });
+
+app.listen(PORT, () => {
+  console.log(`Node.js Backend server running on port ${PORT}`);
+});

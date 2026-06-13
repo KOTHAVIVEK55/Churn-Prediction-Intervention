@@ -28,3 +28,6 @@ Thumbs.db
 
 # Gradio Cache
 pro/.gradio/flagged/
+
+# Local database fallback
+backend/users.json
