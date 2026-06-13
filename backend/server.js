@@ -17,9 +17,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 // Proxy routes to Python Gradio apps
-app.use('/churn', createProxyMiddleware({ target: 'http://127.0.0.1:7860', changeOrigin: true, ws: true }));
-app.use('/growth', createProxyMiddleware({ target: 'http://127.0.0.1:1000', changeOrigin: true, ws: true }));
-app.use('/future', createProxyMiddleware({ target: 'http://127.0.0.1:1002', changeOrigin: true, ws: true }));
+app.use('/churn', createProxyMiddleware({ target: 'http://localhost:7860', changeOrigin: true, ws: true }));
+app.use('/growth', createProxyMiddleware({ target: 'http://localhost:1000', changeOrigin: true, ws: true }));
+app.use('/future', createProxyMiddleware({ target: 'http://localhost:1002', changeOrigin: true, ws: true }));
 
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/whatsapp', require('./routes/whatsappRoutes'));

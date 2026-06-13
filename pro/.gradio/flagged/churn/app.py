@@ -517,4 +517,4 @@ Upload dataset and AI will:
         outputs=alert_status
     )
 
-app.launch(server_port=7860, root_path="/churn")
+app.launch(server_name="0.0.0.0", server_port=7860, root_path="/churn")

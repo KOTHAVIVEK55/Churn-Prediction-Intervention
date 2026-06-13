@@ -216,6 +216,7 @@ with gr.Blocks(
     )
 
 app.launch(
+    server_name="0.0.0.0",
     server_port=1002,
     root_path="/future",
     theme=gr.themes.Soft(

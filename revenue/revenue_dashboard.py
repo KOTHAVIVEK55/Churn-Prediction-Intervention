@@ -282,6 +282,7 @@ Upload merged dataset and AI will:
     )
 
 app.launch(
+    server_name="0.0.0.0",
     server_port=1000,
     root_path="/growth"
 )
