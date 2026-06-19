@@ -11,11 +11,11 @@ model=joblib.load(
 
 def predict_growth(file):
 
-    if file.name.endswith(".csv"):
-        df=pd.read_csv(file.name)
-
-    else:
-        df=pd.read_excel(file.name)
+    filepath = getattr(file, "name", file)
+    if filepath.endswith(".csv"):
+        df=pd.read_csv(filepath)
+    elif filepath.endswith(".xlsx"):
+        df=pd.read_excel(filepath)
 
     X=df.drop(
         ["Future_Growth_Trend"],

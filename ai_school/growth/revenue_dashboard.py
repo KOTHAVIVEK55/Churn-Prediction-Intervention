@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 
 def analyze_growth(file):
 
-    if file.name.endswith(".csv"):
-        df=pd.read_csv(file.name)
-
-    else:
-        df=pd.read_excel(file.name)
+    filepath = getattr(file, "name", file)
+    if filepath.endswith(".csv"):
+        df=pd.read_csv(filepath)
+    elif filepath.endswith(".xlsx"):
+        df=pd.read_excel(filepath)
 
     df_2024=df[df["Year"]==2024]
     df_2025=df[df["Year"]==2025]

@@ -12,11 +12,12 @@ model=joblib.load(
 
 def analyze_dataset(file):
 
-    if file.name.endswith(".csv"):
-        df=pd.read_csv(file.name)
+    filepath = getattr(file, "name", file)
+    if filepath.endswith(".csv"):
+        df=pd.read_csv(filepath)
 
-    elif file.name.endswith(".xlsx"):
-        df=pd.read_excel(file.name)
+    elif filepath.endswith(".xlsx"):
+        df=pd.read_excel(filepath)
 
     else:
         return None,None,None,None,None,None

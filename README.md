@@ -2,6 +2,8 @@
   <h1>🏫 AI School Intelligence & Growth Analytics</h1>
   <p><b>An enterprise-grade, dual-stack AI platform built to predict student churn, forecast revenue growth, and automate parent interventions via WhatsApp.</b></p>
   
+  <p>🔴 <b>Live Demo:</b> <a href="https://churn-prediction-intervention-vaat.vercel.app/">https://churn-prediction-intervention-vaat.vercel.app/</a></p>
+
   <img src="./school_preview.png" alt="AI School Dashboard Preview" width="800"/>
 </div>
 
