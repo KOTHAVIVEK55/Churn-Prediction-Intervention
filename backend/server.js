@@ -15,17 +15,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 
-const mlWarningHTML = `
-  <div style="font-family: sans-serif; padding: 40px; text-align: center; color: white; background: #0b1020; height: 100vh;">
-    <h1>⚠️ Machine Learning Model Offline</h1>
-    <p>This ML model requires a persistent Python server (Gradio) and cannot run on Vercel's Serverless architecture.</p>
-    <p>Please deploy the <b>ai_school</b> folder to <a href="https://huggingface.co/spaces" style="color: #6366f1;">Hugging Face Spaces</a> or Render.com, and update your frontend buttons to link there!</p>
-  </div>
-`;
-
-app.get('/churn', (req, res) => res.status(503).send(mlWarningHTML));
-app.get('/growth', (req, res) => res.status(503).send(mlWarningHTML));
-app.get('/future', (req, res) => res.status(503).send(mlWarningHTML));
+// Provide external ML App links to the frontend
+app.get('/api/config', (req, res) => {
+    const hfSpaceUrl = "https://huggingface.co/spaces/Vivek1000/school-ai-models";
+    res.json({
+        churnUrl: hfSpaceUrl,
+        growthUrl: hfSpaceUrl,
+        futureUrl: hfSpaceUrl
+    });
+});
 
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/whatsapp', require('./routes/whatsappRoutes'));
