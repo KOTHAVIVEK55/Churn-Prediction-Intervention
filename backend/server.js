@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Provide external ML App links to the frontend
 app.get('/api/config', (req, res) => {
-    const hfSpaceUrl = "https://huggingface.co/spaces/Vivek1000/school-ai-models";
+    const hfSpaceUrl = "https://huggingface.co/spaces/Vivek1000/school-ai-model";
     res.json({
         churnUrl: hfSpaceUrl,
         growthUrl: hfSpaceUrl,
