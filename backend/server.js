@@ -40,6 +40,10 @@ mongoose.connect(MONGO_URI)
     console.warn('Backend server will continue running using local JSON database fallback.');
   });
 
-app.listen(PORT, () => {
-  console.log(`Node.js Backend server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Node.js Backend server running on port ${PORT}`);
+  });
+}
+
+module.exports = app;
